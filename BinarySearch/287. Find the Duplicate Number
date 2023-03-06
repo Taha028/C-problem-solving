@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_map<int,int> a;
+        vector<int> c;
+        for(int i:nums){
+            if(a.find(i)!=a.end()){
+                a[i]+=1;
+            }
+            else{
+                a[i]=1;
+            }
+        }
+        for(auto i:a){
+            if(i.second>1){
+                c.push_back(i.first);
+            }
+        }
+        return c[0];
+        
+    }
+};
