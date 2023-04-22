@@ -1,0 +1,31 @@
+Given an integer array nums, return true if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or false otherwise.
+
+ 
+
+Example 1:
+
+Input: nums = [1,5,11,5]
+Output: true
+Explanation: The array can be partitioned as [1, 5, 5] and [11].
+
+
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int size = nums.size();
+        sort(nums.begin(), nums.end());  // sort the array in ascending order
+        
+        for (int i = 0; i < size; i++) {
+            int sum = 0;
+            for (int j = 0; j < size; j++) {
+                if (i != j) {
+                    sum += nums[j];
+                }
+            }
+            if (nums[i] == sum) {
+                return true;
+            }
+        }
+        return false;
+    }
+};
